@@ -76,7 +76,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .recipe-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; color: var(--text); box-shadow: var(--shadow); transition: transform .12s, border-color .12s; }
 .recipe-card:hover { transform: translateY(-2px); border-color: var(--accent); }
 .thumb { position: relative; aspect-ratio: 4 / 3; background: var(--accent-soft); display: grid; place-items: center; }
-.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .thumb-emoji { font-size: 3.4rem; }
 .fav-badge { position: absolute; top: 8px; right: 10px; color: #f5b400; font-size: 1.2rem; text-shadow: 0 1px 2px rgba(0,0,0,.3); }
 .card-body { padding: 10px 12px 12px; }
