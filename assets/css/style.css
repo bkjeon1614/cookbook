@@ -1,0 +1,147 @@
+:root {
+  --bg: #fbf8f3;
+  --surface: #ffffff;
+  --text: #2b2622;
+  --muted: #7a7068;
+  --line: #ebe4da;
+  --accent: #d9622b;
+  --accent-soft: #fbe7dc;
+  --ok: #2f8a4c;
+  --radius: 14px;
+  --shadow: 0 1px 3px rgba(60, 40, 20, .08);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1b1917; --surface: #252220; --text: #eee7df; --muted: #a59c93;
+    --line: #3a3530; --accent: #f08a54; --accent-soft: #3d2a1f; --ok: #6cc28a;
+    --shadow: none; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1b1917; --surface: #252220; --text: #eee7df; --muted: #a59c93;
+  --line: #3a3530; --accent: #f08a54; --accent-soft: #3d2a1f; --ok: #6cc28a;
+  --shadow: none; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+a { color: var(--accent); text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+/* 헤더 */
+.site-header { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.brand { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+.header-actions { display: flex; gap: 4px; }
+.icon-btn { display: inline-grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 1.1rem; }
+.icon-btn:hover { background: var(--accent-soft); color: var(--accent); }
+.site-footer { color: var(--muted); font-size: .85rem; padding-top: 32px; padding-bottom: 32px; text-align: center; }
+
+/* 검색 */
+.search-panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-top: 20px; box-shadow: var(--shadow); }
+.tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+.tab { flex: 1; border: 1px solid var(--line); background: transparent; border-radius: 10px; padding: 10px; font-weight: 600; color: var(--muted); }
+.tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.search-input { width: 100%; font: inherit; font-size: 1rem; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); }
+.search-input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.search-input.bare { border: 0; background: transparent; padding: 6px 4px; flex: 1; min-width: 160px; outline: none; }
+.chip-input { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; border: 1px solid var(--line); border-radius: 10px; padding: 6px 8px; background: var(--bg); }
+.chip-input:focus-within { outline: 2px solid var(--accent); outline-offset: -1px; }
+.opt { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; color: var(--muted); margin-top: 10px; cursor: pointer; }
+.ing-cloud { margin-top: 10px; font-size: .9rem; }
+.ing-cloud summary { color: var(--muted); cursor: pointer; }
+.ing-cloud .chips { margin-top: 8px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 999px; padding: 4px 12px; font-size: .88rem; }
+.chip small { color: var(--muted); }
+.chip:hover { border-color: var(--accent); }
+.chip.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.filters { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
+.filter-actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.link-btn { border: 0; background: none; color: var(--accent); padding: 0; font-size: .9rem; margin-top: 10px; }
+
+/* 결과 카드 */
+.result-info { color: var(--muted); font-size: .9rem; margin: 18px 2px 10px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.recipe-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; color: var(--text); box-shadow: var(--shadow); transition: transform .12s, border-color .12s; }
+.recipe-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.thumb { position: relative; aspect-ratio: 4 / 3; background: var(--accent-soft); display: grid; place-items: center; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb-emoji { font-size: 3.4rem; }
+.fav-badge { position: absolute; top: 8px; right: 10px; color: #f5b400; font-size: 1.2rem; text-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.card-body { padding: 10px 12px 12px; }
+.card-body h3 { margin: 0; font-size: 1.05rem; }
+.card-meta { margin: 2px 0 0; color: var(--muted); font-size: .82rem; }
+.match { margin: 6px 0 0; font-size: .82rem; }
+.missing { color: var(--muted); }
+.have-all { color: var(--ok); font-weight: 600; }
+.empty { color: var(--muted); grid-column: 1 / -1; text-align: center; padding: 40px 0; }
+.recent { margin-top: 28px; }
+.recent h2 { font-size: 1rem; color: var(--muted); }
+
+/* 레시피 상세 */
+.recipe { max-width: 720px; margin: 0 auto; padding-top: 16px; }
+.back { display: inline-block; margin-bottom: 12px; font-size: .9rem; }
+.recipe-hero { border-radius: var(--radius); overflow: hidden; background: var(--accent-soft); }
+.recipe-hero img { display: block; width: 100%; max-height: 420px; object-fit: cover; }
+.recipe-hero.no-image { display: grid; place-items: center; height: 160px; }
+.hero-emoji { font-size: 5rem; }
+.recipe-title { margin: 18px 0 6px; font-size: 1.9rem; }
+.meta { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--muted); font-size: .92rem; }
+.meta a { color: inherit; }
+.tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-size: .88rem; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 8px 12px; font-size: .9rem; }
+.btn:hover { border-color: var(--accent); }
+.btn.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 16px; box-shadow: var(--shadow); }
+.card h2 { font-size: 1.15rem; margin: 0; }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.card-head .link-btn { margin: 0; }
+.hint { color: var(--muted); font-size: .8rem; }
+.ing-section { font-size: .9rem; color: var(--accent); margin: 14px 0 4px; }
+.ingredients { list-style: none; padding: 0; margin: 0; }
+.ingredients li { border-bottom: 1px dashed var(--line); }
+.ingredients li:last-child { border-bottom: 0; }
+.ingredients label { display: flex; align-items: center; gap: 10px; padding: 8px 2px; cursor: pointer; }
+.ingredients input { width: 18px; height: 18px; accent-color: var(--accent); flex: none; }
+.ing-name { flex: 1; }
+.ing-amount { color: var(--muted); font-size: .92rem; text-align: right; }
+.ingredients input:checked ~ span { text-decoration: line-through; opacity: .5; }
+
+.steps ol { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+.steps ol > li { counter-increment: step; position: relative; padding: 10px 4px 10px 44px; border-radius: 10px; cursor: pointer; transition: opacity .15s; }
+.steps ol > li:hover { background: var(--bg); }
+.steps ol > li::before { content: counter(step); position: absolute; left: 6px; top: 10px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: .9rem; }
+.steps ol > li.done { opacity: .45; }
+.steps ol > li.done::before { content: "✓"; background: var(--ok); }
+
+.tips { background: var(--accent-soft); border-color: transparent; }
+.tips ul { margin: 8px 0 0; padding-left: 20px; }
+.source { color: var(--muted); font-size: .85rem; }
+
+@media (max-width: 520px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .thumb-emoji { font-size: 2.6rem; }
+  .recipe-title { font-size: 1.6rem; }
+}
+
+@media print {
+  .site-header, .site-footer, .no-print, .back { display: none !important; }
+  body { background: #fff; color: #000; }
+  .card { box-shadow: none; border: 0; padding: 0; }
+  .recipe-hero.no-image { display: none; }
+  .steps ol > li.done { opacity: 1; }
+}

@@ -1,0 +1,30 @@
+title: 봉구리의 요리책
+description: 재료로, 요리 이름으로 찾는 나만의 레시피 모음
+lang: ko
+
+# GitHub Pages 주소: https://bkjeon1614.github.io/cookbook
+url: "https://bkjeon1614.github.io"
+baseurl: "/cookbook"
+
+collections:
+  recipes:
+    output: true
+    permalink: /recipes/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: recipes
+    values:
+      layout: recipe
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
+  - recipe-template.md
+  - Gemfile
+  - Gemfile.lock
+  - .claude

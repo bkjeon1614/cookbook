@@ -1,0 +1,85 @@
+---
+layout: default
+---
+<article class="recipe" data-url="{{ page.url | relative_url }}" data-title="{{ page.title | escape }}">
+  <a class="back" href="{{ '/' | relative_url }}">← 목록으로</a>
+
+  <div class="recipe-hero{% unless page.image %} no-image{% endunless %}">
+    {% if page.image %}
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">
+    {% else %}
+      <div class="hero-emoji" aria-hidden="true">{{ page.emoji | default: '🍽️' }}</div>
+    {% endif %}
+  </div>
+
+  <h1 class="recipe-title">{{ page.title }}</h1>
+
+  <ul class="meta">
+    {% if page.category %}<li><a href="{{ '/' | relative_url }}?cat={{ page.category | url_encode }}">📂 {{ page.category }}</a></li>{% endif %}
+    {% if page.servings %}<li>👥 {{ page.servings }}</li>{% endif %}
+    {% if page.time %}<li>⏱ {{ page.time }}</li>{% endif %}
+    {% if page.difficulty %}<li>📊 {{ page.difficulty }}</li>{% endif %}
+  </ul>
+
+  {% if page.tags.size > 0 %}
+  <div class="tags">
+    {% for t in page.tags %}<a class="tag" href="{{ '/' | relative_url }}?q={{ t | url_encode }}">#{{ t }}</a>{% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="toolbar no-print">
+    <button type="button" class="btn" id="fav-btn">☆ 즐겨찾기</button>
+    <button type="button" class="btn" id="wake-btn" hidden>🔆 화면 켜두기</button>
+    <button type="button" class="btn" id="copy-btn">📋 장보기 목록 복사</button>
+    <button type="button" class="btn" onclick="window.print()">🖨 인쇄</button>
+  </div>
+
+  <section class="card">
+    <div class="card-head">
+      <h2>재료</h2>
+      <button type="button" class="link-btn no-print" id="reset-ing">체크 초기화</button>
+    </div>
+    {% for s in page.ingredients %}
+      {% if s.items %}
+        {% if s.section %}<h3 class="ing-section">{{ s.section }}</h3>{% endif %}
+        {% assign items = s.items %}
+      {% else %}
+        {% assign items = s | split: "@@never@@" %}
+      {% endif %}
+      <ul class="ingredients">
+        {% for it in items %}
+          {% assign parts = it | split: "|" %}
+          <li>
+            <label>
+              <input type="checkbox">
+              <span class="ing-name">{{ parts[0] | strip }}</span>
+              {% if parts[1] %}<span class="ing-amount">{{ parts[1] | strip }}</span>{% endif %}
+            </label>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </section>
+
+  <section class="card steps">
+    <div class="card-head">
+      <h2>만드는 법</h2>
+      <span class="hint no-print">단계를 누르면 완료 표시</span>
+    </div>
+    {{ content }}
+  </section>
+
+  {% if page.tips.size > 0 %}
+  <section class="card tips">
+    <h2>💡 포인트</h2>
+    <ul>
+      {% for t in page.tips %}<li>{{ t }}</li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if page.source %}
+  <p class="source">출처: {% if page.source contains 'http' %}<a href="{{ page.source }}" target="_blank" rel="noopener">{{ page.source }}</a>{% else %}{{ page.source }}{% endif %}</p>
+  {% endif %}
+</article>
+<script defer src="{{ '/assets/js/recipe.js' | relative_url }}"></script>

@@ -1,0 +1,28 @@
+---
+layout: null
+permalink: /search.json
+---
+[
+{%- for r in site.recipes -%}
+  {%- assign names = "" | split: "" -%}
+  {%- for s in r.ingredients -%}
+    {%- if s.items -%}{%- assign items = s.items -%}{%- else -%}{%- assign items = s | split: "@@never@@" -%}{%- endif -%}
+    {%- for it in items -%}
+      {%- assign n = it | split: "|" | first | strip -%}
+      {%- assign names = names | push: n -%}
+    {%- endfor -%}
+  {%- endfor -%}
+  {
+    "title": {{ r.title | jsonify }},
+    "url": {{ r.url | relative_url | jsonify }},
+    "emoji": {{ r.emoji | default: "🍽️" | jsonify }},
+    "image": {% if r.image %}{{ r.image | relative_url | jsonify }}{% else %}null{% endif %},
+    "category": {{ r.category | default: "기타" | jsonify }},
+    "tags": {% if r.tags %}{{ r.tags | jsonify }}{% else %}[]{% endif %},
+    "time": {{ r.time | jsonify }},
+    "servings": {{ r.servings | jsonify }},
+    "difficulty": {{ r.difficulty | jsonify }},
+    "ingredients": {{ names | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+]

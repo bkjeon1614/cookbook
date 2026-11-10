@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<section class="search-panel">
+  <div class="tabs" role="tablist">
+    <button type="button" class="tab active" data-mode="dish" role="tab">🍲 요리로 찾기</button>
+    <button type="button" class="tab" data-mode="ing" role="tab">🥕 재료로 찾기</button>
+  </div>
+
+  <div class="mode mode-dish">
+    <input id="q" class="search-input" type="search" placeholder="요리 이름, 태그, 재료로 검색 (예: 장어, 덮밥)" autocomplete="off">
+  </div>
+
+  <div class="mode mode-ing" hidden>
+    <div class="chip-input">
+      <div id="ing-chips" class="chips"></div>
+      <input id="ing-input" class="search-input bare" type="search" list="ing-list" placeholder="가진 재료 입력 후 Enter (예: 대파, 마늘)" autocomplete="off">
+      <datalist id="ing-list"></datalist>
+    </div>
+    <label class="opt"><input type="checkbox" id="ing-all"> 입력한 재료가 모두 들어간 요리만</label>
+    <details class="ing-cloud">
+      <summary>전체 재료 보기</summary>
+      <div id="ing-cloud" class="chips"></div>
+    </details>
+  </div>
+
+  <div class="filters">
+    <div id="cats" class="chips"></div>
+    <div class="filter-actions">
+      <label class="opt"><input type="checkbox" id="fav-only"> ★ 즐겨찾기만</label>
+      <button type="button" class="link-btn" id="random-btn">🎲 오늘 뭐 먹지?</button>
+    </div>
+  </div>
+</section>
+
+<p id="result-info" class="result-info"></p>
+<div id="results" class="grid"></div>
+
+<section id="recent-wrap" class="recent" hidden>
+  <h2>최근 본 레시피</h2>
+  <div id="recent" class="chips"></div>
+</section>
+
+<script defer src="{{ '/assets/js/search.js' | relative_url }}"></script>
