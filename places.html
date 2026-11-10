@@ -1,0 +1,33 @@
+---
+layout: default
+title: 맛집
+nav: places
+permalink: /places/
+description: 네이버지도에 저장한 봉슐랭가이드 맛집 지도
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css
+---
+<section class="search-panel">
+  <h1 class="page-title">🍽 봉슐랭가이드</h1>
+  <input id="pq" class="search-input" type="search" placeholder="가게 이름, 지역으로 검색 (예: 냉면, 수유, 제주)" autocomplete="off">
+  <div class="filters">
+    <div id="grades" class="chips"></div>
+    <div id="types" class="chips"></div>
+    <div id="regions" class="chips"></div>
+    <div class="filter-actions">
+      <label class="opt"><input type="checkbox" id="review-only"> 📝 블로그 후기 있는 곳만</label>
+      <button type="button" class="link-btn" id="place-random">🎲 오늘은 여기!</button>
+    </div>
+  </div>
+</section>
+
+<div id="map" class="place-map"></div>
+<p id="place-info" class="result-info"></p>
+<div id="place-list" class="place-list"></div>
+
+<script>
+  window.PLACES = {{ site.data.places | jsonify }};
+  window.PLACE_REVIEWS = {{ site.data.place_reviews | jsonify }};
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script defer src="{{ '/assets/js/places.js' | relative_url }}"></script>

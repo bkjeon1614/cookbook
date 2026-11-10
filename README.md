@@ -30,6 +30,23 @@
 
 GitHub 웹에서 바로 추가해도 됩니다: 저장소 → `_recipes` → **Add file → Create new file**.
 
+## 맛집 (봉슐랭가이드)
+
+`/places/` 페이지 — 네이버지도에 저장한 맛집을 지도와 목록으로 보여준다.
+등급(★★ / ★ / ☆), 종류, 지역 필터와 검색, 블로그 후기 링크를 지원한다.
+
+- 데이터: `_data/places.json` (스크립트가 생성, 직접 고치지 않는다)
+- 블로그 후기 연결: `_data/place_reviews.yml` (네이버지도 장소 ID → 후기 링크, 직접 관리)
+
+네이버지도에 맛집을 새로 저장했으면 아래를 실행하고 커밋·푸시한다.
+
+```sh
+python3 scripts/import_naver_places.py
+```
+
+공유 폴더를 바꾸거나 추가할 때는 `scripts/import_naver_places.py` 의 `FOLDERS` 를 고친다.
+폴더는 네이버지도에서 '공개 + 공유' 상태여야 한다. (네이버지도 공유 페이지의 비공식 API 를 쓰므로 바뀔 수 있음)
+
 ## GitHub Pages 설정 (최초 1회)
 
 저장소 **Settings → Pages → Build and deployment**
@@ -51,6 +68,9 @@ _config.yml          사이트 설정
 _recipes/            레시피 (마크다운 1개 = 요리 1개)
 _layouts/            페이지 틀 (default, recipe)
 index.html           메인(검색) 페이지
+places.html          맛집 지도 페이지
+_data/               맛집 데이터, 블로그 후기 연결
+scripts/             네이버지도 맛집 가져오기
 search.json          검색 인덱스 (빌드 시 자동 생성)
 assets/css, js       스타일, 검색/레시피 스크립트
 recipe-template.md   새 레시피 템플릿

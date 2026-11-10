@@ -1,0 +1,47 @@
+# 장소 ID(네이버지도) -> 블로그 후기. import_naver_places.py 로 다시 가져와도 유지된다.
+
+"763758295":  # 을밀대 역삼점
+  - title: "을밀대 역삼"
+    url: https://bkjeon1614.tistory.com/802
+"1538215694":  # 금금 송리단길점
+  - title: "송파역 금금"
+    url: https://bkjeon1614.tistory.com/798
+"993043508":  # 강남진해장
+  - title: "강남 진해장"
+    url: https://bkjeon1614.tistory.com/794
+"17990788":  # 맛좋은순대국
+  - title: "뚝섬유원지 맛좋은순대국"
+    url: https://bkjeon1614.tistory.com/778
+"33877438":  # 이남장 삼성점
+  - title: "삼성역 이남장"
+    url: https://bkjeon1614.tistory.com/777
+"1053941458":  # 평양면옥
+  - title: "오류동 평양면옥"
+    url: https://bkjeon1614.tistory.com/775
+"34883067":  # 정인면옥 본점
+  - title: "[여의도] 정인면옥"
+    url: https://bkjeon1614.tistory.com/682
+"11861413":  # 봉피양 방이점
+  - title: "[방이역] 봉피양"
+    url: https://bkjeon1614.tistory.com/580
+"11599752":  # 평양면옥
+  - title: "[의정부] 평양면옥"
+    url: https://bkjeon1614.tistory.com/554
+"1031670347":  # 면장우동
+  - title: "[쌍문] 면장우동"
+    url: https://bkjeon1614.tistory.com/624
+"1539185460":  # 유즈라멘 서울역본점
+  - title: "[서울역] 유즈라멘"
+    url: https://bkjeon1614.tistory.com/584
+"38274932":  # 충무로광안리 광안리본점
+  - title: "[충무로] 광안리"
+    url: https://bkjeon1614.tistory.com/579
+"1646434551":  # 대광어회집
+  - title: "[수유] 대광어 횟집"
+    url: https://bkjeon1614.tistory.com/553
+"37912785":  # 진미평양냉면
+  - title: "학동역 진미평양냉면 후기"
+    url: https://bkjeon1614.tistory.com/548
+"11678838":  # 필동면옥
+  - title: "필동면옥 후기"
+    url: https://bkjeon1614.tistory.com/409
